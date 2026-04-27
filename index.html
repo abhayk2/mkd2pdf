@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Markdown ➔ PDF</title>
-    <!-- Load Markdown parser from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -80,7 +79,7 @@
             min-height: 100px;
             background: #ffffff;
             margin-bottom: 20px;
-            display: none; /* hidden until user clicks preview */
+            display: none; 
         }
     </style>
 </head>
@@ -104,17 +103,15 @@
                 return;
             }
 
-            // Parse Markdown to HTML
             const htmlContent = marked.parse(mdText);
 
-            // Open new window with the formatted content
             const printWindow = window.open('', '_blank', 'width=1000,height=800');
             printWindow.document.write(`
                 <!DOCTYPE html>
                 <html>
                 <head>
                     <meta charset="UTF-8">
-                    <title>LLD Roadmap</title>
+                    <title></title>
                     <style>
                         body {
                             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -175,11 +172,8 @@
             `);
             printWindow.document.close();
 
-            // Trigger print (which can be saved as PDF) when the window loads
             printWindow.onload = () => {
                 printWindow.print();
-                // Optional: close window after print dialog (not always reliable)
-                // printWindow.onafterprint = () => printWindow.close();
             };
         }
 
